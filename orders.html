@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGROCART - My Orders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="stylesB.css">
+    <link rel="stylesheet" href="orderStyles.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">AGROCART</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="dashboard.html">HOME</a></li>
+                <li><a href="myproducts.html" class="active">MY PRODUCTS</a></li>
+                <li><a href="orders.html">ORDERS</a></li>
+                <li><a href="settings.html">SETTINGS</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <a href="notifications.html" class="icon"><i class="fas fa-bell"></i></a>
+            <a href="profile.html" class="icon"><i class="fas fa-user"></i></a>
+            <a href="logout.php" class="logout-btn">Logout</a>
+        </div>
+    </header>
+    
+    <section class="orders-section">
+        <div class="container">
+            <h1>My Orders</h1>
+            
+            <div class="search-filter-bar">
+                <div class="search-bar">
+                    <input type="text" id="order-search" placeholder="Search by Order ID or product...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="filter-options">
+                    <select id="status-filter">
+                        <option value="all">All Statuses</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Processing">Processing</option>
+                        <option value="Shipped">Shipped</option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>
+                    <select id="date-filter">
+                        <option value="all">All Time</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                        <option value="year">This Year</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="orders-container">
+                <div class="loading-indicator">
+                    <div class="loading-spinner"></div>
+                    <p>Loading your orders...</p>
+                </div>
+            </div>
+            
+            <div id="no-orders-message" style="display: none;">
+                <div class="empty-state">
+                    <i class="fas fa-shopping-bag fa-4x"></i>
+                    <h2>No Orders Found</h2>
+                    <p>You haven't placed any orders yet.</p>
+                    <a href="index.html" class="primary-btn">Start Shopping</a>
+                </div>
+            </div>
+            
+            <div class="pagination-controls">
+                <button id="prev-page" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                <span id="page-info">Page 1 of 1</span>
+                <button id="next-page" disabled>Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Order Detail Modal -->
+    <div id="order-detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal-btn">&times;</span>
+            <div id="order-detail-content">
+                <!-- Order details will be populated here -->
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 AGROCART - Agriculture Marketing Management System</p>
+    </footer>
+    
+    <script src="orders.js"></script>
+    <script src="buyerproduct.js"></script>
+</body>
+</html>

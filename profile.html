@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroCart - Profile</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>AGROCART</h1>
+    <nav>
+      <a href="dashboard.html">HOME</a>
+      <a href="myproducts.html">MY PRODUCTS</a>
+      <a href="orders.html">ORDERS</a>
+      <a href="profile.html" class="active">PROFILE</a>
+      <a href="about.html">ABOUT</a>
+      <button id="logoutBtn">Logout</button>
+    </nav>
+  </header>
+  
+  <main>
+    <div class="profile-container">
+      <div class="profile-header">
+        <div class="profile-avatar">
+          <img src="https://via.placeholder.com/150" alt="Profile Picture" id="profilePic">
+          <button id="changePicBtn"><i class="fas fa-camera"></i> Change</button>
+        </div>
+        <div class="profile-info">
+          <h2 id="userName">John Farmer</h2>
+          <p class="user-role">Farmer</p>
+          <p class="user-location"><i class="fas fa-map-marker-alt"></i> Maharashtra, India</p>
+        </div>
+      </div>
+
+      <div class="profile-details">
+        <div class="detail-card">
+          <h3><i class="fas fa-user"></i> Personal Information</h3>
+          <div class="detail-item">
+            <span>Full Name:</span>
+            <p id="fullName">John Doe Farmer</p>
+          </div>
+          <div class="detail-item">
+            <span>Email:</span>
+            <p id="userEmail">john.farmer@example.com</p>
+          </div>
+          <div class="detail-item">
+            <span>Phone:</span>
+            <p id="userPhone">+91 98765 43210</p>
+          </div>
+          <div class="detail-item">
+            <span>Address:</span>
+            <p id="userAddress">Farm House No. 5, Village Road, Nashik, Maharashtra</p>
+          </div>
+          <button class="edit-btn" id="editPersonalBtn">Edit Information</button>
+        </div>
+
+        <div class="detail-card">
+          <h3><i class="fas fa-tractor"></i> Farm Information</h3>
+          <div class="detail-item">
+            <span>Farm Name:</span>
+            <p id="farmName">Green Valley Farms</p>
+          </div>
+          <div class="detail-item">
+            <span>Farm Size:</span>
+            <p id="farmSize">5 acres</p>
+          </div>
+          <div class="detail-item">
+            <span>Main Crops:</span>
+            <p id="mainCrops">Grapes, Wheat, Vegetables</p>
+          </div>
+          <div class="detail-item">
+            <span>Certifications:</span>
+            <p id="certifications">Organic Certified (2022)</p>
+          </div>
+          <button class="edit-btn" id="editFarmBtn">Edit Information</button>
+        </div>
+      </div>
+
+      <div class="stats-section">
+        <div class="stat-card">
+          <h4>Products Listed</h4>
+          <p class="stat-value">24</p>
+        </div>
+        <div class="stat-card">
+          <h4>Orders Completed</h4>
+          <p class="stat-value">156</p>
+        </div>
+        <div class="stat-card">
+          <h4>Customer Rating</h4>
+          <p class="stat-value">4.8 <i class="fas fa-star"></i></p>
+        </div>
+        <div class="stat-card">
+          <h4>Member Since</h4>
+          <p class="stat-value">2020</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Edit Profile Modal -->
+  <div class="modal" id="editModal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2 id="modalTitle">Edit Personal Information</h2>
+      <form id="profileForm">
+        <div class="form-group" id="personalForm">
+          <div class="input-group">
+            <label for="editFullName">Full Name</label>
+            <input type="text" id="editFullName" required>
+          </div>
+          <div class="input-group">
+            <label for="editEmail">Email</label>
+            <input type="email" id="editEmail" required>
+          </div>
+          <div class="input-group">
+            <label for="editPhone">Phone</label>
+            <input type="tel" id="editPhone" required>
+          </div>
+          <div class="input-group">
+            <label for="editAddress">Address</label>
+            <textarea id="editAddress" rows="3" required></textarea>
+          </div>
+        </div>
+
+        <div class="form-group" id="farmForm" style="display: none;">
+          <div class="input-group">
+            <label for="editFarmName">Farm Name</label>
+            <input type="text" id="editFarmName" required>
+          </div>
+          <div class="input-group">
+            <label for="editFarmSize">Farm Size</label>
+            <input type="text" id="editFarmSize" required>
+          </div>
+          <div class="input-group">
+            <label for="editMainCrops">Main Crops</label>
+            <input type="text" id="editMainCrops" required>
+          </div>
+          <div class="input-group">
+            <label for="editCertifications">Certifications</label>
+            <input type="text" id="editCertifications">
+          </div>
+        </div>
+
+        <button type="submit" class="save-btn">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCart - Notifications</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="logo">AGROCART</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="dashboard.html">HOME</a></li>
+                <li><a href="myproducts.html">MY PRODUCTS</a></li>
+                <li><a href="orders.html">ORDERS</a></li>
+                <li><a href="settings.html">SETTINGS</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <a href="notifications.html" class="icon active"><i class="fas fa-bell"></i></a>
+            <a href="profile.html" class="icon"><i class="fas fa-user"></i></a>
+            <a href="logout.php" class="logout-btn">Logout</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>Notifications</h1>
+            <div class="notification-actions">
+                <button id="mark-all-read" class="secondary-btn"><i class="fas fa-check-double"></i> Mark All as Read</button>
+                <button id="clear-all" class="danger-btn"><i class="fas fa-trash-alt"></i> Clear All</button>
+            </div>
+        </section>
+
+        <div class="notifications-container">
+            <div class="notification-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="order">Orders</button>
+                <button class="filter-btn" data-filter="system">System</button>
+                <button class="filter-btn" data-filter="message">Messages</button>
+                <button class="filter-btn unread-filter" data-filter="unread">
+                    Unread <span class="unread-count" id="unread-count">0</span>
+                </button>
+            </div>
+
+            <div class="notifications-list" id="notifications-list">
+                <!-- Notifications will be loaded here dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <script src="js/notifications.js"></script>
+</body>
+</html>

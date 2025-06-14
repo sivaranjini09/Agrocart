@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCart - My Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <style>
+        .product-image img {
+            max-width: 150px;
+            max-height: 150px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="logo">AGROCART</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="dashboard.html">HOME</a></li>
+                <li><a href="myproducts.html" class="active">MY PRODUCTS</a></li>
+                <li><a href="orders.html">ORDERS</a></li>
+                <li><a href="settings.html">SETTINGS</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <a href="notifications.html" class="icon"><i class="fas fa-bell"></i></a>
+            <a href="profile.html" class="icon"><i class="fas fa-user"></i></a>
+            <a href="logout.php" class="logout-btn">Logout</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>My Products</h1>
+            <a href="addnewproduct.html" id="add-product-btn" class="primary-btn">+ Add New Product</a>
+        </section>
+
+        <section class="filter-section">
+            <div class="search-box">
+                <input type="text" id="product-search" placeholder="Search products...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="filter-options">
+                <select id="category-filter">
+                    <option value="">All Categories</option>
+                    <option value="vegetables">Vegetables</option>
+                    <option value="fruits">Fruits</option>
+                    <option value="grains">Grains</option>
+                    <option value="dairy">Dairy Products</option>
+                    <option value="herbs">Herbs & Spices</option>
+                </select>
+                <select id="status-filter">
+                    <option value="">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="sold-out">Sold Out</option>
+                    <option value="expired">Expired</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="products-grid" id="products-container">
+            <!-- Products will be loaded here dynamically -->
+        </section>
+
+        <!-- Add/Edit Product Modal -->
+        <div id="product-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modal-title">Add New Product</h2>
+                <form id="product-form">
+                    <input type="hidden" id="product-id">
+                    <div class="form-group">
+                        <label for="product-image">Product Image</label>
+                        <div class="image-upload-container">
+                            <div id="image-preview"></div>
+                            <input type="file" id="product-image" accept="image/*">
+                            <label for="product-image" class="upload-btn">Choose Image</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-name">Product Name</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-description">Description</label>
+                        <textarea id="product-description" rows="4"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="product-category">Category</label>
+                            <select id="product-category" required>
+                                <option value="">Select Category</option>
+                                <option value="vegetables">Vegetables</option>
+                                <option value="fruits">Fruits</option>
+                                <option value="grains">Grains</option>
+                                <option value="dairy">Dairy Products</option>
+                                <option value="herbs">Herbs & Spices</option>
+                            </select>
+                        </div>
+                        <div class="form-group half">
+                            <label for="product-quantity">Available Quantity (kg)</label>
+                            <input type="number" id="product-quantity" min="0" step="0.1" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="product-price">Price per kg</label>
+                            <input type="number" id="product-price" min="0" step="0.01" required>
+                        </div>
+                        <div class="form-group half">
+                            <label for="product-expiry">Expiry Date</label>
+                            <input type="date" id="product-expiry" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="organic-check">
+                            <input type="checkbox" id="organic-check">
+                            This is an organic product
+                        </label>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="button" id="cancel-btn" class="secondary-btn">Cancel</button>
+                        <button type="submit" class="primary-btn">Save Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div id="confirm-modal" class="modal">
+            <div class="modal-content confirm-content">
+                <h2>Confirm Deletion</h2>
+                <p>Are you sure you want to delete this product? This action cannot be undone.</p>
+                <div class="modal-buttons">
+                    <button type="button" id="cancel-delete" class="secondary-btn">Cancel</button>
+                    <button type="button" id="confirm-delete" class="danger-btn">Delete</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/products.js"></script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCart - Add New Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .navbar {
+            background-color: #4CAF50;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-item {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-item.active {
+            border-bottom: 3px solid white;
+            padding-bottom: 5px;
+        }
+        
+        .user-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-actions a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+        
+        .logout-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 4px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input[type="text"], input[type="number"], input[type="date"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .image-upload {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .image-upload img {
+            max-width: 100%;
+            max-height: 200px;
+            display: none;
+            margin: 10px auto;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        
+        .required:after {
+            content: " *";
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#" class="navbar-brand">AGROCART</a>
+        <div class="navbar-nav">
+            <a href="dashboard.html" class="nav-item">HOME</a>
+            <a href="myproducts.html" class="nav-item active">MY PRODUCTS</a>
+            <a href="orders.html" class="nav-item">ORDERS</a>
+            <a href="#" class="nav-item">SETTINGS</a>
+            <a href="#" class="nav-item">ABOUT</a>
+        </div>
+        <div class="user-actions">
+            <img src="/api/placeholder/24/24" alt="notification" />
+            <img src="/api/placeholder/24/24" alt="profile" />
+            <a href="#" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Add New Product</h1>
+        
+        <form id="addProductForm">
+            <div class="form-group">
+                <label for="productName" class="required">Product Name</label>
+                <input type="text" id="productName" name="productName" placeholder="Enter product name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="productImage" class="required">Product Image</label>
+                <div class="image-upload">
+                    <input type="file" id="productImage" name="productImage" accept="image/*" required>
+                    <p>Drop your image here or click to browse</p>
+                    <img id="imagePreview" src="" alt="Preview">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="quantity" class="required">Quantity Available</label>
+                <input type="number" id="quantity" name="quantity" min="1" placeholder="Enter available quantity" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="price" class="required">Price (per unit)</label>
+                <input type="number" id="price" name="price" min="0" step="0.01" placeholder="Enter price per unit" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category">
+                    <option value="">Select a category</option>
+                    <option value="vegetables">Vegetables</option>
+                    <option value="fruits">Fruits</option>
+                    <option value="grains">Grains</option>
+                    <option value="dairy">Dairy Products</option>
+                    <option value="herbs">Herbs & Spices</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Product Description</label>
+                <textarea id="description" name="description" placeholder="Enter detailed product description"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="expiryDate">Expiry Date</label>
+                <input type="date" id="expiryDate" name="expiryDate">
+            </div>
+            
+            <div class="button-group">
+                <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Product</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        // Image preview functionality
+        document.getElementById('productImage').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(event) {
+                const imgPreview = document.getElementById('imagePreview');
+                imgPreview.src = event.target.result;
+                imgPreview.style.display = 'block';
+            };
+            
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+
+    // Form submission
+    document.getElementById('addProductForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Saving...';
+        submitButton.disabled = true;
+        
+        try {
+            // Get values from the form
+            const productData = {
+                productName: document.getElementById('productName').value,
+                quantity: parseInt(document.getElementById('quantity').value),
+                price: parseFloat(document.getElementById('price').value),
+                category: document.getElementById('category').value,
+                description: document.getElementById('description').value,
+                expiryDate: document.getElementById('expiryDate').value || null,
+            };
+            
+            // Handle image
+            const fileInput = document.getElementById('productImage');
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = async function(event) {
+                    // Add image to the product data
+                    productData.imageUrl = event.target.result;
+                    
+                    // Save to MongoDB through API
+                    await saveProductToMongoDB(productData);
+                };
+                
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                // If no image was selected
+                productData.imageUrl = '';
+                
+                // Save to MongoDB through API
+                await saveProductToMongoDB(productData);
+            }
+        } catch (error) {
+            console.error('Error saving product:', error);
+            alert('Error saving product: ' + error.message);
+            
+            // Reset button state
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }
+    });
+
+    // Function to save product data to MongoDB
+    async function saveProductToMongoDB(productData) {
+        try {
+            const response = await fetch('http://localhost:5004/api/products', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(productData)
+            });
+            
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Failed to save product');
+            }
+            
+            const savedProduct = await response.json();
+            console.log('Product saved successfully:', savedProduct);
+            
+            alert('Product saved successfully!');
+            window.location.href = 'myproducts.html';
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error saving product: ' + error.message);
+            
+            // Reset button state
+            const submitButton = document.querySelector('button[type="submit"]');
+            submitButton.textContent = 'Save Product';
+            submitButton.disabled = false;
+        }
+    }
+    </script>
+</body>
+</html>
